@@ -1,6 +1,8 @@
 ul,
 li {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -32,18 +34,15 @@ body {
 }
 
 .board {
+  display: flex;
+  flex-wrap: wrap;
   padding: 10px;
   margin-bottom: 16px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.5);
 }
 
-.panel {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.panel li {
+.board li {
   width: 40px;
   height: 40px;
   margin: 5px;
@@ -54,24 +53,24 @@ body {
   user-select: none;
 }
 
-.panel li.pressed {
+.board li.pressed {
   background: #cccccc;
   box-shadow: none;
   margin-top: 9px;
   margin-bottom: 1px;
 }
 
-.panel li.easy-color {
+.board li.easy-color {
   background: #0cb80c;
   box-shadow: 0 4px 0 #127112;
 }
 
-.panel li.normal-color {
+.board li.normal-color {
   background: #00aaff;
   box-shadow: 0 4px 0 #0088cc;
 }
 
-.panel li.hard-color {
+.board li.hard-color {
   background: #5f3fee;
   box-shadow: 0 4px 0 #361baf;
 }
