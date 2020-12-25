@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #cccccc;
+  font-family: "Courier New", sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+.level-text {
+  font-size: 40px;
+  text-align: center;
+}
+
+.container {
+  width: 170px;
+  margin: 0 auto;
+}
+
+.timer {
+  margin-bottom: 8px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.board {
+  padding: 0 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel li {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  line-height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.panel li.pressed {
+  background: #cccccc;
+  box-shadow: none;
+  margin-top: 9px;
+  margin-bottom: 1px;
+}
+
+.panel li.easy-color {
+  background: #0cb80c;
+  box-shadow: 0 4px 0 #127112;
+}
+
+.panel li.normal-color {
+  background: #00aaff;
+  box-shadow: 0 4px 0 #0088cc;
+}
+
+.panel li.hard-color {
+  background: #5f3fee;
+  box-shadow: 0 4px 0 #361baf;
+}
+
+.btn {
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.start {
+  background: #f44336;
+  margin-bottom: 18px;
+}
+
+.change {
+  background: #f79328;
+}
