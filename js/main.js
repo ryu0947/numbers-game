@@ -5,6 +5,20 @@
     constructor() {
       this.el = document.createElement("li");
       this.el.classList.add("pressed");
+
+      const start = document.getElementById("start");
+
+      start.addEventListener("click", () => {
+          this.gameStart();
+      });
+    }
+
+    getEl() {
+      return this.el;
+    }
+
+    gameStart() {
+        this.el.classList.remove("pressed");
     }
   }
 
@@ -21,7 +35,7 @@
     setUp() {
       const board = document.getElementById("js-board");
       this.panels.forEach((panel) => {
-        board.appendChild(panel.el);
+        board.appendChild(panel.getEl());
       });
     }
   }
