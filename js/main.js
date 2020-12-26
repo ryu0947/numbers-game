@@ -5,6 +5,9 @@
     constructor() {
       this.el = document.createElement("li");
       this.el.classList.add("pressed");
+      this.el.addEventListener("click", () => {
+        this.check();
+      });
     }
 
     getEl() {
@@ -14,6 +17,17 @@
     active(num) {
       this.el.classList.remove("pressed");
       this.el.textContent = num;
+    }
+
+    check() {
+      if (currentNum === Number(this.el.textContent)) {
+        this.el.classList.add("pressed");
+
+        if (currentNum === 9) {
+          clearTimeout(timeoutId);
+        }
+      }
+      currentNum++;
     }
   }
 
@@ -45,9 +59,25 @@
 
   const board = new Board();
 
+  let currentNum;
+  let timeoutId;
+  let startTime;
+
+  function runTimer() {
+    const timer = document.getElementById("js-timer");
+    timer.textContent = ((Date.now() - startTime) / 1000).toFixed(2);
+
+    timeoutId = setTimeout(() => {
+      runTimer();
+    }, 10);
+  }
+
   const start = document.getElementById("start");
 
   start.addEventListener("click", () => {
     board.active();
+    currentNum = 1;
+    startTime = Date.now();
+    runTimer();
   });
 }
