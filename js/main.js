@@ -5,20 +5,15 @@
     constructor() {
       this.el = document.createElement("li");
       this.el.classList.add("pressed");
-
-      const start = document.getElementById("start");
-
-      start.addEventListener("click", () => {
-          this.gameStart();
-      });
     }
 
     getEl() {
       return this.el;
     }
 
-    gameStart() {
-        this.el.classList.remove("pressed");
+    active(num) {
+      this.el.classList.remove("pressed");
+      this.el.textContent = num;
     }
   }
 
@@ -38,7 +33,21 @@
         board.appendChild(panel.getEl());
       });
     }
+
+    active() {
+      const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      this.panels.forEach((panel) => {
+        const num = nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
+        panel.active(num);
+      });
+    }
   }
 
   const board = new Board();
+
+  const start = document.getElementById("start");
+
+  start.addEventListener("click", () => {
+    board.active();
+  });
 }
