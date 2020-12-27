@@ -93,3 +93,7 @@ body {
 .change {
   background: #f79328;
 }
+
+.active {
+    opacity: 0.6;
+}
