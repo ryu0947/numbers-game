@@ -57,27 +57,44 @@
     }
   }
 
-  const board = new Board();
+  class Game {
+    constructer() {
+      this.board = new Board();
 
-  let currentNum;
-  let timeoutId;
-  let startTime;
+      this.currentNum;
+      this.timeoutId;
+      this.startTime;
 
-  function runTimer() {
-    const timer = document.getElementById("js-timer");
-    timer.textContent = ((Date.now() - startTime) / 1000).toFixed(2);
+      this.start = document.getElementById("start");
 
-    timeoutId = setTimeout(() => {
+      this.start.addEventListener("click", () => {
+        this.gameStart();
+      });
+    }
+
+    gameStart() {
+      if (typeof this.timeoutId !== "undefined") {
+        return;
+      }
+
+      this.board.active();
+      this.currentNum = 1;
+      this.start.classList.add("active");
+      this.startTime = Date.now();
       runTimer();
-    }, 10);
+    }
+
+    runTimer() {
+      const timer = document.getElementById("js-timer");
+      this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(
+        2
+      );
+
+      this.timeoutId = setTimeout(() => {
+        runTimer();
+      }, 10);
+    }
   }
 
-  const start = document.getElementById("start");
-
-  start.addEventListener("click", () => {
-    board.active();
-    currentNum = 1;
-    startTime = Date.now();
-    runTimer();
-  });
+  new.Game();
 }
