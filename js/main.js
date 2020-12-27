@@ -68,6 +68,10 @@
       this.timeoutId;
       this.startTime;
       this.start = document.getElementById("start");
+      this.timer = document.getElementById("js-timer");
+      this.comment = document.getElementById("js-comment");
+
+      this.commentList = ["Bad...", "No Good", "Good!", "Excellent!!", "Perfect!!"];
 
       this.start.addEventListener("click", () => {
         this.gameStart();
@@ -89,28 +93,33 @@
     }
 
     runTimer() {
-      const timer = document.getElementById("js-timer");
-      timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(2);
+      this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(2);
 
       this.timeoutId = setTimeout(() => {
         this.runTimer();
       }, 10);
     }
 
+    easyModeComment() {
+        if(this.timer.textContent <= 7){
+            this.comment.textContent = this.this.commentList[4];
+        }
+    }
+
     getCurrentNum() {
-        return this.currentNum;
+      return this.currentNum;
     }
 
     addCurrentNum() {
-        this.currentNum++;
+      this.currentNum++;
     }
 
     getTimeoutId() {
-        return this.timeoutId;
+      return this.timeoutId;
     }
 
     getStart() {
-        return this.start;
+      return this.start;
     }
   }
 
