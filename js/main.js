@@ -2,7 +2,8 @@
 
 {
   class Panel {
-    constructor() {
+    constructor(game) {
+      this.game = game;
       this.el = document.createElement("li");
       this.el.classList.add("pressed");
       this.el.addEventListener("click", () => {
@@ -20,22 +21,24 @@
     }
 
     check() {
-      if (currentNum === Number(this.el.textContent)) {
+      if (this.game.currentNum === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
 
-        if (currentNum === 9) {
-          clearTimeout(timeoutId);
+        if (this.game.currentNum === 9) {
+          clearTimeout(this.game.timeoutId);
+          this.game.start.classList.remove("active");
         }
       }
-      currentNum++;
+      this.game.currentNum++;
     }
   }
 
   class Board {
-    constructor() {
+    constructor(game) {
+      this.game = game;
       this.panels = [];
       for (let i = 1; i <= 9; i++) {
-        this.panels.push(new Panel());
+        this.panels.push(new Panel(this.game));
       }
       console.log(this.panels);
       this.setUp();
@@ -58,13 +61,12 @@
   }
 
   class Game {
-    constructer() {
-      this.board = new Board();
+    constructor() {
+      this.board = new Board(this);
 
       this.currentNum;
       this.timeoutId;
       this.startTime;
-
       this.start = document.getElementById("start");
 
       this.start.addEventListener("click", () => {
@@ -73,28 +75,28 @@
     }
 
     gameStart() {
-      if (typeof this.timeoutId !== "undefined") {
+      if (this.start.classList.contains("active")) {
         return;
       }
 
-      this.board.active();
       this.currentNum = 1;
       this.start.classList.add("active");
+
+      this.board.active();
+
       this.startTime = Date.now();
-      runTimer();
+      this.runTimer();
     }
 
     runTimer() {
       const timer = document.getElementById("js-timer");
-      this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(
-        2
-      );
+      timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(2);
 
       this.timeoutId = setTimeout(() => {
-        runTimer();
+        this.runTimer();
       }, 10);
     }
   }
 
-  new.Game();
+  new Game();
 }
