@@ -21,15 +21,15 @@
     }
 
     check() {
-      if (this.game.currentNum === Number(this.el.textContent)) {
+      if (this.game.getCurrentNum() === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
 
-        if (this.game.currentNum === 9) {
+        if (this.game.getCurrentNum() === 9) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
         }
       }
-      this.game.currentNum++;
+      this.game.addCurrentNum();
     }
   }
 
@@ -95,6 +95,22 @@
       this.timeoutId = setTimeout(() => {
         this.runTimer();
       }, 10);
+    }
+
+    getCurrentNum() {
+        return this.currentNum;
+    }
+
+    addCurrentNum() {
+        this.currentNum++;
+    }
+
+    getTimeoutId() {
+        return this.timeoutId;
+    }
+
+    getStart() {
+        return this.start;
     }
   }
 
