@@ -156,4 +156,14 @@
   }
 
   new Game();
+
+  const bgList = [
+    "url('/img/number-game-easy.jpg')",
+    "url('number-game-normal.jpg')",
+    "url('number-game-hard.jpg')",
+  ];
+
+  function changeBg(bgUrl) {
+    document.body.style.background = bgUrl;
+  }
 }
