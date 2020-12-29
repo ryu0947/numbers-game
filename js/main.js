@@ -27,7 +27,7 @@
         if (this.game.getCurrentNum() === this.game.getLevel() ** 2) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
-          this.game.easyModeComment();
+          this.game.partComment();
         }
         this.game.addCurrentNum();
       }
@@ -92,7 +92,7 @@
       });
 
       this.change.addEventListener("click", () => {
-        this.levelChange();
+        this.changeLevel();
       });
     }
 
@@ -129,7 +129,7 @@
       }, 10);
     }
 
-    levelChange() {
+    changeLevel() {
       confirm(
         "ゲームのレベルを変更しますか？\n変更すると現在のゲームはリセットされます"
       );
@@ -138,7 +138,21 @@
       }
     }
 
-    easyModeComment() {
+    partComment() {
+      switch (this.getLevel()) {
+        case 3:
+          this.easyLevelComment();
+          break;
+        case 4:
+          this.normalLevelComment();
+          break;
+        case 5:
+          this.hardLevelComment();
+          break;
+      }
+    }
+
+    easyLevelComment() {
       if (this.timer.textContent <= 6.5) {
         this.comment.textContent = this.commentList[4];
       } else if (this.timer.textContent <= 8) {
@@ -146,6 +160,34 @@
       } else if (this.timer.textContent <= 10) {
         this.comment.textContent = this.commentList[2];
       } else if (this.timer.textContent <= 12) {
+        this.comment.textContent = this.commentList[1];
+      } else {
+        this.comment.textContent = this.commentList[0];
+      }
+    }
+
+    normalLevelComment() {
+      if (this.timer.textContent <= 12) {
+        this.comment.textContent = this.commentList[4];
+      } else if (this.timer.textContent <= 14) {
+        this.comment.textContent = this.commentList[3];
+      } else if (this.timer.textContent <= 16) {
+        this.comment.textContent = this.commentList[2];
+      } else if (this.timer.textContent <= 18) {
+        this.comment.textContent = this.commentList[1];
+      } else {
+        this.comment.textContent = this.commentList[0];
+      }
+    }
+
+    hardLevelComment() {
+      if (this.timer.textContent <= 22) {
+        this.comment.textContent = this.commentList[4];
+      } else if (this.timer.textContent <= 24) {
+        this.comment.textContent = this.commentList[3];
+      } else if (this.timer.textContent <= 26) {
+        this.comment.textContent = this.commentList[2];
+      } else if (this.timer.textContent <= 28) {
         this.comment.textContent = this.commentList[1];
       } else {
         this.comment.textContent = this.commentList[0];
@@ -189,25 +231,25 @@
     document.body.style.background = backgroundImageUrl;
   }
 
-  function hide() {
+  function hideSelect() {
     mask.classList.add("hide");
     select.classList.add("hide");
   }
 
   easy.addEventListener("click", () => {
-    hide();
+    hideSelect();
     changeBg(backgroundImages[0]);
     new Game(3);
   });
 
   normal.addEventListener("click", () => {
-    hide();
+    hideSelect();
     changeBg(backgroundImages[1]);
     new Game(4);
   });
 
   hard.addEventListener("click", () => {
-    hide();
+    hideSelect();
     changeBg(backgroundImages[2]);
     new Game(5);
   });
