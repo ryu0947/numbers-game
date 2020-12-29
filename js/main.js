@@ -84,6 +84,10 @@
       this.start.addEventListener("click", () => {
         this.gameStart();
       });
+
+      this.change.addEventListener("click", () => {
+        this.levelChange();
+      });
     }
 
     gameStart() {
@@ -109,6 +113,15 @@
       this.timeoutId = setTimeout(() => {
         this.runTimer();
       }, 10);
+    }
+
+    levelChange() {
+      confirm(
+        "ゲームのレベルを変更しますか？\n変更すると現在のゲームはリセットされます"
+      );
+      if (confirm) {
+        location.reload();
+      }
     }
 
     easyModeComment() {
