@@ -109,6 +109,51 @@ body {
   opacity: 0.6;
 }
 
+.level-select {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.level-select-inner {
+  width: 300px;
+  padding: 30px;
+  background: #ffffff;
+  color: #333333;
+  text-align: center;
+}
+
+.level-select-inner > p {
+  margin: 0 0 24px 0;
+}
+
+.select-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.select-btn {
+  cursor: pointer;
+  padding: 7px 12px;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.easy {
+  background: #0cb80c;
+}
+
+.normal {
+  background: #00aaff;
+}
+
+.hard {
+  background: #5f3fee;
+}
+
 .mask {
   position: absolute;
   top: 0;
