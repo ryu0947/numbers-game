@@ -220,6 +220,7 @@
   const hard = document.getElementById("js-hard");
   const mask = document.getElementById("js-mask");
   const select = document.getElementById("js-select");
+  const levelText = document.getElementById("js-level-text");
 
   const backgroundImages = [
     "url('img/number-game-easy.jpg') no-repeat center/cover",
@@ -236,21 +237,44 @@
     select.classList.add("hide");
   }
 
+  function changeText() {
+    switch (this.getLevel()) {
+      case 3:
+        levelText.textContent = "Easy";
+        levelText.classList.add("easy-text");
+        break;
+      case 4:
+        levelText.textContent = "Normal";
+        levelText.classList.add("normal-text");
+        break;
+      case 5:
+        levelText.textContent = "Hard";
+        levelText.classList.add("hard-text");
+        break;
+    }
+  }
+
   easy.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[0]);
+    levelText.textContent = "Easy";
+    levelText.classList.add("easy-text");
     new Game(3);
   });
 
   normal.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[1]);
+    levelText.textContent = "Normal";
+    levelText.classList.add("normal-text");
     new Game(4);
   });
 
   hard.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[2]);
+    levelText.textContent = "Hard";
+    levelText.classList.add("hard-text");
     new Game(5);
   });
 }
