@@ -24,7 +24,7 @@
       if (this.game.getCurrentNum() === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
 
-        if (this.game.getCurrentNum() === 9) {
+        if (this.game.getCurrentNum() === this.game.level ** 2) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
           this.game.easyModeComment();
@@ -38,7 +38,7 @@
     constructor(game) {
       this.game = game;
       this.panels = [];
-      for (let i = 1; i <= 9; i++) {
+      for (let i = 1; i <= this.game.level ** 2; i++) {
         this.panels.push(new Panel(this.game));
       }
       console.log(this.panels);
@@ -53,7 +53,10 @@
     }
 
     active() {
-      const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      const nums = [];
+      for (let i = 1; i <= this.game.level ** 2; i++) {
+        nums.push(i);
+      }
       this.panels.forEach((panel) => {
         const num = nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
         panel.active(num);
@@ -163,9 +166,9 @@
   const select = document.getElementById("js-select");
 
   const backgroundImages = [
-    "url('/img/number-game-easy.jpg')",
-    "url('number-game-normal.jpg')",
-    "url('number-game-hard.jpg')",
+    "url('img/number-game-easy.jpg') no-repeat center/cover",
+    "url('img/number-game-normal.jpg') no-repeat center/cover",
+    "url('img/number-game-hard.jpg') no-repeat center/cover",
   ];
 
   function changeBg(backgroundImageUrl) {
@@ -174,7 +177,7 @@
 
   function hide() {
     mask.classList.add("hide");
-    select.classList.add("select");
+    select.classList.add("hide");
   }
 
   easy.addEventListener("click", () => {
