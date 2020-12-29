@@ -24,7 +24,7 @@
       if (this.game.getCurrentNum() === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
 
-        if (this.game.getCurrentNum() === this.game.level ** 2) {
+        if (this.game.getCurrentNum() === this.game.getLevel() ** 2) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
           this.game.easyModeComment();
@@ -38,7 +38,7 @@
     constructor(game) {
       this.game = game;
       this.panels = [];
-      for (let i = 1; i <= this.game.level ** 2; i++) {
+      for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
         this.panels.push(new Panel(this.game));
       }
       console.log(this.panels);
@@ -54,7 +54,7 @@
 
     active() {
       const nums = [];
-      for (let i = 1; i <= this.game.level ** 2; i++) {
+      for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
         nums.push(i);
       }
       this.panels.forEach((panel) => {
@@ -66,8 +66,8 @@
 
   class Game {
     constructor(level) {
-      this.board = new Board(this);
       this.level = level;
+      this.board = new Board(this);
 
       this.currentNum;
       this.timeoutId;
@@ -140,6 +140,10 @@
       } else {
         this.comment.textContent = this.commentList[0];
       }
+    }
+
+    getLevel() {
+      return this.level;
     }
 
     getCurrentNum() {
