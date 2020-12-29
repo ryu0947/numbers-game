@@ -1,6 +1,7 @@
 "use strict";
 
 {
+  // パネルに関する処理を管理する
   class Panel {
     constructor(game) {
       this.game = game;
@@ -9,33 +10,35 @@
       this.el.addEventListener("click", () => {
         this.check();
       });
-
     }
 
     getEl() {
       return this.el;
     }
 
+    // ゲームスタート時のパネルの状態
     active(num) {
       this.el.classList.remove("pressed");
       this.changePanelColor();
       this.el.textContent = num;
     }
 
+    // 難易度によってパネルの色を変える
     changePanelColor() {
-        switch (this.game.getLevel()) {
-          case 3:
-            this.el.classList.add("easy-color");
-            break;
-          case 4:
-            this.el.classList.add("normal-color");
-            break;
-          case 5:
-            this.el.classList.add("hard-color");
-            break;
-        }
+      switch (this.game.getLevel()) {
+        case 3:
+          this.el.classList.add("easy-color");
+          break;
+        case 4:
+          this.el.classList.add("normal-color");
+          break;
+        case 5:
+          this.el.classList.add("hard-color");
+          break;
       }
+    }
 
+    // パネルが数字の小さい順から押されているか判断する/全てのパネルが押し終わった時の処理
     check() {
       if (this.game.getCurrentNum() === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
@@ -50,6 +53,7 @@
     }
   }
 
+  // ボードに関する処理を管理する
   class Board {
     constructor(game) {
       this.game = game;
@@ -60,6 +64,7 @@
       this.setUp();
     }
 
+    // パネル(li要素)を生成する
     setUp() {
       const board = document.getElementById("js-board");
       this.panels.forEach((panel) => {
@@ -67,6 +72,7 @@
       });
     }
 
+    // パネルにランダムに数字を降る
     active() {
       const nums = [];
       for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
@@ -79,6 +85,7 @@
     }
   }
 
+  // ゲーム全体の処理を管理する
   class Game {
     constructor(level) {
       this.level = level;
@@ -111,6 +118,7 @@
       });
     }
 
+    // 難易度に応じてcontainerの幅を可変させる
     setUp() {
       const container = document.getElementById("js-container");
       const BOARD_PADDING = 10;
@@ -119,6 +127,7 @@
         PANEL_WIDTH * this.getLevel() + BOARD_PADDING * 2 + "px";
     }
 
+    // ゲームスタートボタンを押した時の処理
     gameStart() {
       if (this.start.classList.contains("active")) {
         return;
@@ -134,6 +143,7 @@
       this.runTimer();
     }
 
+    // タイマーを走らせる
     runTimer() {
       this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(
         2
@@ -144,6 +154,7 @@
       }, 10);
     }
 
+    // レベルチェンジボタンを押した時に確認する
     changeLevel() {
       confirm(
         "ゲームのレベルを変更しますか？\n変更すると現在のゲームはリセットされます"
@@ -153,6 +164,7 @@
       }
     }
 
+    // 難易度によってコメントを分岐
     partComment() {
       switch (this.getLevel()) {
         case 3:
@@ -167,6 +179,7 @@
       }
     }
 
+    // 難易度Easyの時のコメント
     easyLevelComment() {
       if (this.timer.textContent <= 6.5) {
         this.comment.textContent = this.commentList[4];
@@ -181,6 +194,7 @@
       }
     }
 
+    // 難易度Normalの時のコメント
     normalLevelComment() {
       if (this.timer.textContent <= 12) {
         this.comment.textContent = this.commentList[4];
@@ -195,6 +209,7 @@
       }
     }
 
+    // 難易度Hardの時のコメント
     hardLevelComment() {
       if (this.timer.textContent <= 22) {
         this.comment.textContent = this.commentList[4];
@@ -243,15 +258,18 @@
     "url('img/number-game-hard.jpg') no-repeat center/cover",
   ];
 
+  // 難易度によって背景画像を変える
   function changeBg(backgroundImageUrl) {
     document.body.style.background = backgroundImageUrl;
   }
 
+  // セレクトボックスを隠す
   function hideSelect() {
     mask.classList.add("hide");
     select.classList.add("hide");
   }
 
+  // 難易度Easy
   easy.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[0]);
@@ -260,6 +278,7 @@
     new Game(3);
   });
 
+  // 難易度Normal
   normal.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[1]);
@@ -268,6 +287,7 @@
     new Game(4);
   });
 
+  // 難易度Hard
   hard.addEventListener("click", () => {
     hideSelect();
     changeBg(backgroundImages[2]);
