@@ -85,11 +85,7 @@
         "Perfect!!",
       ];
 
-      const container = document.getElementById("js-container");
-      const BOARD_PADDING = 10;
-      const PANEL_WIDTH = 50;
-      container.style.width =
-        PANEL_WIDTH * this.getLevel() + BOARD_PADDING * 2 + "px";
+      this.setUp();
 
       this.start.addEventListener("click", () => {
         this.gameStart();
@@ -98,6 +94,14 @@
       this.change.addEventListener("click", () => {
         this.levelChange();
       });
+    }
+
+    setUp() {
+      const container = document.getElementById("js-container");
+      const BOARD_PADDING = 10;
+      const PANEL_WIDTH = 50;
+      container.style.width =
+        PANEL_WIDTH * this.getLevel() + BOARD_PADDING * 2 + "px";
     }
 
     gameStart() {
