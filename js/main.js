@@ -68,7 +68,8 @@
       this.currentNum;
       this.timeoutId;
       this.startTime;
-      this.start = document.getElementById("start");
+      this.start = document.getElementById("js-start");
+      this.change = document.getElementById("js-change");
       this.timer = document.getElementById("js-timer");
       this.comment = document.getElementById("js-comment");
 
