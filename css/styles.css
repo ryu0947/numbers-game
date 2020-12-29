@@ -64,18 +64,9 @@ body {
   margin: 5px;
   line-height: 40px;
   border-radius: 4px;
-  background: #00aaff;
-  box-shadow: 0 4px 0 #0088cc;
   text-align: center;
   cursor: pointer;
   user-select: none;
-}
-
-.board li.pressed {
-  background: #cccccc;
-  box-shadow: none;
-  margin-top: 9px;
-  margin-bottom: 1px;
 }
 
 .board li.easy-color {
@@ -91,6 +82,13 @@ body {
 .board li.hard-color {
   background: #5f3fee;
   box-shadow: 0 4px 0 #361baf;
+}
+
+.board li.pressed {
+  background: #cccccc;
+  box-shadow: none;
+  margin-top: 9px;
+  margin-bottom: 1px;
 }
 
 .btn {
