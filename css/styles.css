@@ -27,8 +27,20 @@ body {
   text-align: center;
 }
 
+.easy-text {
+  color: #0eff39;
+}
+
+.normal-text {
+  color: #0070ff;
+}
+
+.hard-text {
+  color: #5f3fee;
+}
+
 .container {
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .timer {
@@ -164,7 +176,7 @@ body {
 }
 
 .hide {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s, visibility 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
 }
