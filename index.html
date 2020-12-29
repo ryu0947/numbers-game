@@ -7,8 +7,17 @@
     <title>Numbers Game</title>
   </head>
   <body>
-    
-    <div class="mask"></div>
+    <div id="js-select" class="level-select">
+        <div class="level-select-inner">
+            <p>ゲームのレベルを選んでください</p>
+            <ul class="select-list">
+                <li class="easy select-btn">Easy</li>
+                <li class="normal select-btn">Normal</li>
+                <li class="hard select-btn">Hard</li>
+            </ul>
+        </div>
+    </div>
+    <div id="js-mask" class="mask"></div>
     <h1 id="js-level-text" class="level-text">Level Easy</h1>
     <div class="container">
       <div id="js-timer" class="timer">0.00</div>
