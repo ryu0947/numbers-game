@@ -28,8 +28,8 @@
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
         }
+        this.game.addCurrentNum();
       }
-      this.game.addCurrentNum();
     }
   }
 
@@ -71,7 +71,13 @@
       this.timer = document.getElementById("js-timer");
       this.comment = document.getElementById("js-comment");
 
-      this.commentList = ["Bad...", "No Good", "Good!", "Excellent!!", "Perfect!!"];
+      this.commentList = [
+        "Bad...",
+        "No Good",
+        "Good!",
+        "Excellent!!",
+        "Perfect!!",
+      ];
 
       this.start.addEventListener("click", () => {
         this.gameStart();
@@ -93,7 +99,9 @@
     }
 
     runTimer() {
-      this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(2);
+      this.timer.textContent = ((Date.now() - this.startTime) / 1000).toFixed(
+        2
+      );
 
       this.timeoutId = setTimeout(() => {
         this.runTimer();
@@ -101,9 +109,9 @@
     }
 
     easyModeComment() {
-        if(this.timer.textContent <= 7){
-            this.comment.textContent = this.this.commentList[4];
-        }
+      if (this.timer.textContent <= 7) {
+        this.comment.textContent = this.this.commentList[4];
+      }
     }
 
     getCurrentNum() {
