@@ -9,6 +9,7 @@
       this.el.addEventListener("click", () => {
         this.check();
       });
+
     }
 
     getEl() {
@@ -17,8 +18,23 @@
 
     active(num) {
       this.el.classList.remove("pressed");
+      this.changePanelColor();
       this.el.textContent = num;
     }
+
+    changePanelColor() {
+        switch (this.game.getLevel()) {
+          case 3:
+            this.el.classList.add("easy-color");
+            break;
+          case 4:
+            this.el.classList.add("normal-color");
+            break;
+          case 5:
+            this.el.classList.add("hard-color");
+            break;
+        }
+      }
 
     check() {
       if (this.game.getCurrentNum() === Number(this.el.textContent)) {
@@ -41,7 +57,6 @@
       for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
         this.panels.push(new Panel(this.game));
       }
-      console.log(this.panels);
       this.setUp();
     }
 
@@ -235,23 +250,6 @@
   function hideSelect() {
     mask.classList.add("hide");
     select.classList.add("hide");
-  }
-
-  function changeText() {
-    switch (this.getLevel()) {
-      case 3:
-        levelText.textContent = "Easy";
-        levelText.classList.add("easy-text");
-        break;
-      case 4:
-        levelText.textContent = "Normal";
-        levelText.classList.add("normal-text");
-        break;
-      case 5:
-        levelText.textContent = "Hard";
-        levelText.classList.add("hard-text");
-        break;
-    }
   }
 
   easy.addEventListener("click", () => {
