@@ -62,8 +62,9 @@
   }
 
   class Game {
-    constructor() {
+    constructor(level) {
       this.board = new Board(this);
+      this.level = level;
 
       this.currentNum;
       this.timeoutId;
@@ -155,15 +156,42 @@
     }
   }
 
-  new Game();
+  const easy = document.getElementById("js-easy");
+  const normal = document.getElementById("js-normal");
+  const hard = document.getElementById("js-hard");
+  const mask = document.getElementById("js-mask");
+  const select = document.getElementById("js-select");
 
-  const bgList = [
+  const backgroundImages = [
     "url('/img/number-game-easy.jpg')",
     "url('number-game-normal.jpg')",
     "url('number-game-hard.jpg')",
   ];
 
-  function changeBg(bgUrl) {
-    document.body.style.background = bgUrl;
+  function changeBg(backgroundImageUrl) {
+    document.body.style.background = backgroundImageUrl;
   }
+
+  function hide() {
+    mask.classList.add("hide");
+    select.classList.add("select");
+  }
+
+  easy.addEventListener("click", () => {
+    hide();
+    changeBg(backgroundImages[0]);
+    new Game(3);
+  });
+
+  normal.addEventListener("click", () => {
+    hide();
+    changeBg(backgroundImages[1]);
+    new Game(4);
+  });
+
+  hard.addEventListener("click", () => {
+    hide();
+    changeBg(backgroundImages[2]);
+    new Game(5);
+  });
 }
