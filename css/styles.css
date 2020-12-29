@@ -1,3 +1,7 @@
+html {
+  touch-action: manipulation;
+}
+
 ul,
 li {
   list-style: none;
@@ -95,11 +99,11 @@ body {
 }
 
 .comment {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 24px;
+  margin-top: 24px;
+  text-align: center;
+  font-size: 24px;
 }
 
 .active {
-    opacity: 0.6;
+  opacity: 0.6;
 }
