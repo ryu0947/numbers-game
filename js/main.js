@@ -27,6 +27,7 @@
         if (this.game.getCurrentNum() === 9) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
+          this.game.easyModeComment();
         }
         this.game.addCurrentNum();
       }
@@ -93,6 +94,7 @@
       this.start.classList.add("active");
 
       this.board.active();
+      this.comment.textContent = "";
 
       this.startTime = Date.now();
       this.runTimer();
@@ -109,8 +111,16 @@
     }
 
     easyModeComment() {
-      if (this.timer.textContent <= 7) {
-        this.comment.textContent = this.this.commentList[4];
+      if (this.timer.textContent <= 6.5) {
+        this.comment.textContent = this.commentList[4];
+      } else if (this.timer.textContent <= 8) {
+        this.comment.textContent = this.commentList[3];
+      } else if (this.timer.textContent <= 10) {
+        this.comment.textContent = this.commentList[2];
+      } else if (this.timer.textContent <= 12) {
+        this.comment.textContent = this.commentList[1];
+      } else {
+        this.comment.textContent = this.commentList[0];
       }
     }
 
