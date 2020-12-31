@@ -99,13 +99,13 @@
       this.timer = document.getElementById("js-timer");
       this.comment = document.getElementById("js-comment");
 
-      this.commentList = [
-        "Bad...",
-        "No Good",
-        "Good!",
-        "Excellent!!",
-        "Perfect!!",
-      ];
+      this.commentList = {
+        bad: "Bad...",
+        noGod: "No Good",
+        good: "Good!",
+        excellent: "Excellent!!",
+        perfect: "Perfect!!",
+      };
 
       this.setUp();
 
@@ -166,14 +166,16 @@
 
     // 難易度によってコメントを分岐
     partComment() {
+      const level = { easy: 3, normal: 4, hard: 5 };
+
       switch (this.getLevel()) {
-        case 3:
+        case level.easy:
           this.easyLevelComment();
           break;
-        case 4:
+        case level.normal:
           this.normalLevelComment();
           break;
-        case 5:
+        case level.hard:
           this.hardLevelComment();
           break;
       }
@@ -182,45 +184,45 @@
     // 難易度Easyの時のコメント
     easyLevelComment() {
       if (this.timer.textContent <= 6.5) {
-        this.comment.textContent = this.commentList[4];
+        this.comment.textContent = this.commentList.perfect;
       } else if (this.timer.textContent <= 8) {
-        this.comment.textContent = this.commentList[3];
+        this.comment.textContent = this.commentList.excellent;
       } else if (this.timer.textContent <= 10) {
-        this.comment.textContent = this.commentList[2];
+        this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 12) {
-        this.comment.textContent = this.commentList[1];
+        this.comment.textContent = this.commentList.noGod;
       } else {
-        this.comment.textContent = this.commentList[0];
+        this.comment.textContent = this.commentList.bad;
       }
     }
 
     // 難易度Normalの時のコメント
     normalLevelComment() {
       if (this.timer.textContent <= 12) {
-        this.comment.textContent = this.commentList[4];
+        this.comment.textContent = this.commentList.perfect;
       } else if (this.timer.textContent <= 14) {
-        this.comment.textContent = this.commentList[3];
+        this.comment.textContent = this.commentList.excellent;
       } else if (this.timer.textContent <= 16) {
-        this.comment.textContent = this.commentList[2];
+        this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 18) {
-        this.comment.textContent = this.commentList[1];
+        this.comment.textContent = this.commentList.noGod;
       } else {
-        this.comment.textContent = this.commentList[0];
+        this.comment.textContent = this.commentList.bad;
       }
     }
 
     // 難易度Hardの時のコメント
     hardLevelComment() {
       if (this.timer.textContent <= 22) {
-        this.comment.textContent = this.commentList[4];
+        this.comment.textContent = this.commentList.perfect;
       } else if (this.timer.textContent <= 24) {
-        this.comment.textContent = this.commentList[3];
+        this.comment.textContent = this.commentList.excellent;
       } else if (this.timer.textContent <= 26) {
-        this.comment.textContent = this.commentList[2];
+        this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 28) {
-        this.comment.textContent = this.commentList[1];
+        this.comment.textContent = this.commentList.noGod;
       } else {
-        this.comment.textContent = this.commentList[0];
+        this.comment.textContent = this.commentList.bad;
       }
     }
 
