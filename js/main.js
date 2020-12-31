@@ -17,7 +17,7 @@
     }
 
     // ゲームスタート時のパネルの状態
-    active(num) {
+    panelActive(num) {
       this.el.classList.remove("pressed");
       this.changePanelColor();
       this.el.textContent = num;
@@ -72,15 +72,15 @@
       });
     }
 
-    // パネルにランダムに数字を降る
-    active() {
+    // パネルにランダムに数字を振る
+    assignNumber() {
       const nums = [];
       for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
         nums.push(i);
       }
       this.panels.forEach((panel) => {
         const num = nums.splice(Math.floor(Math.random() * nums.length), 1)[0];
-        panel.active(num);
+        panel.panelActive(num);
       });
     }
   }
@@ -136,7 +136,7 @@
       this.panelCurrentNum = 1;
       this.start.classList.add("active");
 
-      this.board.active();
+      this.board.assignNumber();
       this.comment.textContent = "";
 
       this.startTime = Date.now();
