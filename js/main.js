@@ -178,6 +178,9 @@
         case level.hard:
           this.hardLevelComment();
           break;
+        default:
+          this.comment.textContent = "error";
+          break;
       }
     }
 
