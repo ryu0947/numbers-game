@@ -253,12 +253,12 @@
     }
   }
 
-  const easy = document.getElementById("js-easy");
-  const normal = document.getElementById("js-normal");
-  const hard = document.getElementById("js-hard");
-  const mask = document.getElementById("js-mask");
-  const select = document.getElementById("js-select");
-  const levelText = document.getElementById("js-level-text");
+  const easyElem = document.getElementById("js-easy");
+  const normalElem = document.getElementById("js-normal");
+  const hardElem = document.getElementById("js-hard");
+  const maskElem = document.getElementById("js-mask");
+  const selectElem = document.getElementById("js-select");
+  const levelTextElem = document.getElementById("js-level-text");
 
   const backgroundImages = {
     Easy: "url('img/number-game-easy.jpg') no-repeat center/cover",
@@ -273,34 +273,34 @@
 
   // セレクトボックスを隠す
   function hideSelect() {
-    mask.classList.add("hide");
-    select.classList.add("hide");
+    maskElem.classList.add("hide");
+    selectElem.classList.add("hide");
   }
 
   // 難易度Easy
-  easy.addEventListener("click", () => {
+  easyElem.addEventListener("click", () => {
     hideSelect();
     setBackgroundImage(backgroundImages.Easy);
-    levelText.textContent = "Easy";
-    levelText.classList.add("easy-text");
+    levelTextElem.textContent = "Easy";
+    levelTextElem.classList.add("easy-text");
     new Game(3);
   });
 
   // 難易度Normal
-  normal.addEventListener("click", () => {
+  normalElem.addEventListener("click", () => {
     hideSelect();
     setBackgroundImage(backgroundImages.Normal);
-    levelText.textContent = "Normal";
-    levelText.classList.add("normal-text");
+    levelTextElem.textContent = "Normal";
+    levelTextElem.classList.add("normal-text");
     new Game(4);
   });
 
   // 難易度Hard
-  hard.addEventListener("click", () => {
+  hardElem.addEventListener("click", () => {
     hideSelect();
     setBackgroundImage(backgroundImages.Hard);
-    levelText.textContent = "Hard";
-    levelText.classList.add("hard-text");
+    levelTextElem.textContent = "Hard";
+    levelTextElem.classList.add("hard-text");
     new Game(5);
   });
 }
