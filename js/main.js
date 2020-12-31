@@ -204,13 +204,13 @@
 
     // 難易度Normalの時のコメント
     normalLevelComment() {
-      if (this.timer.textContent <= 12) {
+      if (this.timer.textContent <= 13) {
         this.comment.textContent = this.commentList.perfect;
-      } else if (this.timer.textContent <= 14) {
+      } else if (this.timer.textContent <= 15) {
         this.comment.textContent = this.commentList.excellent;
-      } else if (this.timer.textContent <= 16) {
+      } else if (this.timer.textContent <= 17) {
         this.comment.textContent = this.commentList.good;
-      } else if (this.timer.textContent <= 18) {
+      } else if (this.timer.textContent <= 19) {
         this.comment.textContent = this.commentList.noGod;
       } else {
         this.comment.textContent = this.commentList.bad;
@@ -219,13 +219,13 @@
 
     // 難易度Hardの時のコメント
     hardLevelComment() {
-      if (this.timer.textContent <= 22) {
+      if (this.timer.textContent <= 23) {
         this.comment.textContent = this.commentList.perfect;
-      } else if (this.timer.textContent <= 24) {
+      } else if (this.timer.textContent <= 25) {
         this.comment.textContent = this.commentList.excellent;
-      } else if (this.timer.textContent <= 26) {
+      } else if (this.timer.textContent <= 27) {
         this.comment.textContent = this.commentList.good;
-      } else if (this.timer.textContent <= 28) {
+      } else if (this.timer.textContent <= 29) {
         this.comment.textContent = this.commentList.noGod;
       } else {
         this.comment.textContent = this.commentList.bad;
