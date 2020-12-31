@@ -40,15 +40,15 @@
 
     // パネルが数字の小さい順から押されているか判断する/全てのパネルが押し終わった時の処理
     check() {
-      if (this.game.getCurrentNum() === Number(this.el.textContent)) {
+      if (this.game.getPanelCurrentNum() === Number(this.el.textContent)) {
         this.el.classList.add("pressed");
 
-        if (this.game.getCurrentNum() === this.game.getLevel() ** 2) {
+        if (this.game.getPanelCurrentNum() === this.game.getLevel() ** 2) {
           clearTimeout(this.game.timeoutId);
           this.game.start.classList.remove("active");
           this.game.partComment();
         }
-        this.game.addCurrentNum();
+        this.game.addanelCurrentNum();
       }
     }
   }
@@ -91,7 +91,7 @@
       this.level = level;
       this.board = new Board(this);
 
-      this.currentNum;
+      this.panelCurrentNum;
       this.timeoutId;
       this.startTime;
       this.start = document.getElementById("js-start");
@@ -133,7 +133,7 @@
         return;
       }
 
-      this.currentNum = 1;
+      this.panelCurrentNum = 1;
       this.start.classList.add("active");
 
       this.board.active();
@@ -233,12 +233,12 @@
       return this.level;
     }
 
-    getCurrentNum() {
-      return this.currentNum;
+    getPanelCurrentNum() {
+      return this.panelCurrentNum;
     }
 
-    addCurrentNum() {
-      this.currentNum++;
+    addanelCurrentNum() {
+      this.panelCurrentNum++;
     }
 
     getTimeoutId() {
