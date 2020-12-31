@@ -137,7 +137,10 @@
       this.start.classList.add("active");
 
       this.board.assignNumber();
-      this.comment.textContent = "";
+
+      if (this.comment.textContent) {
+        this.comment.textContent = "";
+      }
 
       this.startTime = Date.now();
       this.runTimer();
@@ -257,15 +260,15 @@
   const select = document.getElementById("js-select");
   const levelText = document.getElementById("js-level-text");
 
-  const backgroundImages = [
-    "url('img/number-game-easy.jpg') no-repeat center/cover",
-    "url('img/number-game-normal.jpg') no-repeat center/cover",
-    "url('img/number-game-hard.jpg') no-repeat center/cover",
-  ];
+  const backgroundImages = {
+    Easy: "url('img/number-game-easy.jpg') no-repeat center/cover",
+    Normal: "url('img/number-game-normal.jpg') no-repeat center/cover",
+    Hard: "url('img/number-game-hard.jpg') no-repeat center/cover",
+  };
 
   // 難易度によって背景画像を変える
-  function changeBg(backgroundImageUrl) {
-    document.body.style.background = backgroundImageUrl;
+  function setBackgroundImage(level) {
+    document.body.style.background = level;
   }
 
   // セレクトボックスを隠す
@@ -277,7 +280,7 @@
   // 難易度Easy
   easy.addEventListener("click", () => {
     hideSelect();
-    changeBg(backgroundImages[0]);
+    setBackgroundImage(backgroundImages.Easy);
     levelText.textContent = "Easy";
     levelText.classList.add("easy-text");
     new Game(3);
@@ -286,7 +289,7 @@
   // 難易度Normal
   normal.addEventListener("click", () => {
     hideSelect();
-    changeBg(backgroundImages[1]);
+    setBackgroundImage(backgroundImages.Normal);
     levelText.textContent = "Normal";
     levelText.classList.add("normal-text");
     new Game(4);
@@ -295,7 +298,7 @@
   // 難易度Hard
   hard.addEventListener("click", () => {
     hideSelect();
-    changeBg(backgroundImages[2]);
+    setBackgroundImage(backgroundImages.Hard);
     levelText.textContent = "Hard";
     levelText.classList.add("hard-text");
     new Game(5);
