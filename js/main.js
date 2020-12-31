@@ -107,7 +107,7 @@
         perfect: "Perfect!!",
       };
 
-      this.setUp();
+      this.setUpContainer();
 
       this.start.addEventListener("click", () => {
         this.gameStart();
@@ -119,7 +119,7 @@
     }
 
     // 難易度に応じてcontainerの幅を可変させる
-    setUp() {
+    setUpContainer() {
       const container = document.getElementById("js-container");
       const BOARD_PADDING = 10;
       const PANEL_WIDTH = 50;
@@ -279,28 +279,31 @@
 
   // 難易度Easy
   easyElem.addEventListener("click", () => {
+    const Easy = 3;
     hideSelect();
     setBackgroundImage(backgroundImages.Easy);
     levelTextElem.textContent = "Easy";
     levelTextElem.classList.add("easy-text");
-    new Game(3);
+    new Game(Easy);
   });
 
   // 難易度Normal
   normalElem.addEventListener("click", () => {
+    const Normal = 4;
     hideSelect();
     setBackgroundImage(backgroundImages.Normal);
     levelTextElem.textContent = "Normal";
     levelTextElem.classList.add("normal-text");
-    new Game(4);
+    new Game(Normal);
   });
 
   // 難易度Hard
   hardElem.addEventListener("click", () => {
+    const Hard = 5;
     hideSelect();
     setBackgroundImage(backgroundImages.Hard);
     levelTextElem.textContent = "Hard";
     levelTextElem.classList.add("hard-text");
-    new Game(5);
+    new Game(Hard);
   });
 }
