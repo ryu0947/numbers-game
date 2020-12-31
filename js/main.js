@@ -48,7 +48,7 @@
           this.game.start.classList.remove("active");
           this.game.partComment();
         }
-        this.game.addanelCurrentNum();
+        this.game.addPanelCurrentNum();
       }
     }
   }
@@ -240,7 +240,7 @@
       return this.panelCurrentNum;
     }
 
-    addanelCurrentNum() {
+    addPanelCurrentNum() {
       this.panelCurrentNum++;
     }
 
