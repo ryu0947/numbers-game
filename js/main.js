@@ -114,7 +114,7 @@
       });
 
       this.change.addEventListener("click", () => {
-        this.changeLevel();
+        this.resetGame();
       });
     }
 
@@ -155,7 +155,7 @@
     }
 
     // レベルチェンジボタンを押した時に確認する
-    changeLevel() {
+    resetGame() {
       confirm(
         "ゲームのレベルを変更しますか？\n変更すると現在のゲームはリセットされます"
       );
