@@ -45,7 +45,7 @@
 
         if (this.game.getPanelCurrentNum() === this.game.getLevel() ** 2) {
           clearTimeout(this.game.timeoutId);
-          this.game.start.classList.remove("active");
+          this.game.returnStartElem().classList.remove("active");
           this.game.partComment();
         }
         this.game.addPanelCurrentNum();
@@ -129,12 +129,12 @@
 
     // ゲームスタートボタンを押した時の処理
     gameStart() {
-      if (this.start.classList.contains("active")) {
+      if (this.returnStartElem().classList.contains("active")) {
         return;
       }
 
       this.panelCurrentNum = 1;
-      this.start.classList.add("active");
+      this.returnStartElem().classList.add("active");
 
       this.board.assignNumber();
 
@@ -248,7 +248,7 @@
       return this.timeoutId;
     }
 
-    getStart() {
+    returnStartElem() {
       return this.start;
     }
   }
