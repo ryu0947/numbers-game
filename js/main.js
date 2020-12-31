@@ -61,11 +61,11 @@
       for (let i = 1; i <= this.game.getLevel() ** 2; i++) {
         this.panels.push(new Panel(this.game));
       }
-      this.setUp();
+      this.setUpPanel();
     }
 
     // パネル(li要素)を生成する
-    setUp() {
+    setUpPanel() {
       const board = document.getElementById("js-board");
       this.panels.forEach((panel) => {
         board.appendChild(panel.getEl());
