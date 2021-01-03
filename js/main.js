@@ -182,8 +182,7 @@
           this.hardLevelComment();
           break;
         default:
-          this.comment.textContent = "error";
-          break;
+          throw new Error(`${this.getLevel()} is not provided.`);
       }
     }
 
