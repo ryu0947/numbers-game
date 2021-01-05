@@ -101,7 +101,7 @@
 
       this.commentList = {
         bad: "Bad...",
-        noGod: "No Good",
+        noGood: "No Good",
         good: "Good!",
         excellent: "Excellent!!",
         perfect: "Perfect!!",
@@ -195,7 +195,7 @@
       } else if (this.timer.textContent <= 10) {
         this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 12) {
-        this.comment.textContent = this.commentList.noGod;
+        this.comment.textContent = this.commentList.noGood;
       } else {
         this.comment.textContent = this.commentList.bad;
       }
@@ -210,7 +210,7 @@
       } else if (this.timer.textContent <= 17) {
         this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 19) {
-        this.comment.textContent = this.commentList.noGod;
+        this.comment.textContent = this.commentList.noGood;
       } else {
         this.comment.textContent = this.commentList.bad;
       }
@@ -225,7 +225,7 @@
       } else if (this.timer.textContent <= 27) {
         this.comment.textContent = this.commentList.good;
       } else if (this.timer.textContent <= 29) {
-        this.comment.textContent = this.commentList.noGod;
+        this.comment.textContent = this.commentList.noGood;
       } else {
         this.comment.textContent = this.commentList.bad;
       }
