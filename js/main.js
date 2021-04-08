@@ -259,6 +259,19 @@
   const selectElem = document.getElementById("js-select");
   const levelTextElem = document.getElementById("js-level-text");
 
+  const images = [
+    "img/number-game-easy.jpg",
+    "img/number-game-normal.jpg",
+    "img/number-game-hard.jpg",
+  ];
+
+  images.forEach((image) => {
+    const creatImg = document.createElement("img");
+    creatImg.src = image;
+    console.log(creatImg);
+  });
+
+
   const backgroundImages = {
     Easy: "url('img/number-game-easy.jpg') no-repeat center/cover",
     Normal: "url('img/number-game-normal.jpg') no-repeat center/cover",
