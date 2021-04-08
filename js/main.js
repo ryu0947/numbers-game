@@ -271,7 +271,6 @@
     console.log(creatImg);
   });
 
-
   const backgroundImages = {
     Easy: "url('img/number-game-easy.jpg') no-repeat center/cover",
     Normal: "url('img/number-game-normal.jpg') no-repeat center/cover",
@@ -290,7 +289,8 @@
   }
 
   // 難易度Easy
-  easyElem.addEventListener("click", () => {
+  easyElem.addEventListener("click", (e) => {
+    e.preventDefault();
     const Easy = 3;
     hideSelect();
     setBackgroundImage(backgroundImages.Easy);
@@ -300,7 +300,8 @@
   });
 
   // 難易度Normal
-  normalElem.addEventListener("click", () => {
+  normalElem.addEventListener("click", (e) => {
+    e.preventDefault();
     const Normal = 4;
     hideSelect();
     setBackgroundImage(backgroundImages.Normal);
@@ -310,7 +311,8 @@
   });
 
   // 難易度Hard
-  hardElem.addEventListener("click", () => {
+  hardElem.addEventListener("click", (e) => {
+    e.preventDefault();
     const Hard = 5;
     hideSelect();
     setBackgroundImage(backgroundImages.Hard);
